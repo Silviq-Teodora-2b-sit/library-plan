@@ -7,10 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name = "User.byEmailAndPass", query = "from User where userEmail=? and userPass=?")
 @Table(name="USERS")
 public class User {
 private int userId;
