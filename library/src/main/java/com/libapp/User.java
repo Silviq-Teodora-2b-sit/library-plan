@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -75,6 +76,7 @@ public void setUserPass(String userPass) {
 }
 
 @ManyToOne(cascade = CascadeType.ALL)
+
 public Role getUserRole() {
 	return userRole;
 }

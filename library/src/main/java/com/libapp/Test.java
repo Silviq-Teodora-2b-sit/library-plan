@@ -14,7 +14,7 @@ public class Test {
 		// TODO Auto-generated method stub
    
 		
-		 final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 	                .configure() // configures settings from hibernate.cfg.xml
 	                .build();
 	        try {
@@ -35,7 +35,11 @@ public class Test {
 	            
 	        } catch (Exception ex) {
 	            StandardServiceRegistryBuilder.destroy(registry);
+	            
+		
 	        }
+	        
+	
 	    }
 		
 	}

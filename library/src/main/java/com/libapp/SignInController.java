@@ -3,22 +3,24 @@ package com.libapp;
 //import java.awt.event.ActionEvent;
 import javafx.event.ActionEvent;
 
-import java.util.List;
+import java.io.IOException;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.scene.Node;
 
 
 public class SignInController {
@@ -34,53 +36,61 @@ public class SignInController {
 
     @FXML
     void onSignINClick(ActionEvent event) {
-
-    	/*final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-	              .configure() // configures settings from hibernate.cfg.xml
-	               .build();
-	        try {
-	            SessionFactory factory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-	            Session session = factory.openSession();  
-	           
-	      User user=null;
-	            String emilString=tf_email_in.getText();
-	             String passString=tf_pass_in.getText();
-	            Query query=session.createQuery("SELECT ur FROM User ur WHERE ur.userEmail=:emilString and ur.userPass=:passString");
-	            		query.setString("userEmail", emilString);
-	            		query.setString("userPass", passString);
-	            user=(User)query.uniqueResult();
-	            
-	            if (user!=null) {
-					System.out.println("Yes!");
-				}
-	            else System.out.println("No!");
-	           
-	        } catch (Exception ex) {
-	           StandardServiceRegistryBuilder.destroy(registry);
-	       }*/
-    	
+    	String email=tf_email_in.getText();
+        String pass=tf_pass_in.getText();
+        
+        if(email.isEmpty() || pass.isEmpty())
+        {
+        	Alert alert=new Alert(AlertType.ERROR);
+        	alert.setHeaderText(null);
+        	alert.setContentText("Fill all required fields!");
+        	alert.showAndWait();
+        }
+        else {
+        	
+        
     	SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
     	Session session=sessionFactory.openSession();
     	session.beginTransaction();
-    	  String email=tf_email_in.getText();
-          String pass=tf_pass_in.getText();
+    	
+    	
     	Query query=session.getNamedQuery("User.byEmailAndPass");
     	query.setParameter(0, email);
     	query.setParameter(1, pass);
-    	//query.setParameter("userPass", pass);
-    	
+ 
     	User user=(User)query.uniqueResult();
-    	/*
-    	List<User> users =(List<User>)query.list();*/
+    	
     	session.getTransaction().commit();
     	session.close();
+    	
     	if(user!=null)
     	{
-    		System.out.println("Yes!"+user.toString());
+    		((Node)event.getSource()).getScene().getWindow().hide();
+    		loadWindow("admin");
     	}
-    	else System.out.println("NO!");
-    	/*for(User user: users)
-    		System.out.println(user.getUserName());*/
+    	else {
+
+        	Alert alert=new Alert(AlertType.ERROR);
+        	alert.setHeaderText(null);
+        	alert.setContentText("Incorrect email or password!");
+        	alert.showAndWait();
+    	}
+        }
+    	
+    }
+    
+    private void loadWindow(String title) {
+    	Parent root = null;
+		 try {
+			root= FXMLLoader.load(getClass().getResource(title+".fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 Scene scene= new Scene(root);
+		 Stage stage=new Stage(StageStyle.DECORATED);
+		 stage.setScene(scene);
+		 stage.show();
     }
 
 }

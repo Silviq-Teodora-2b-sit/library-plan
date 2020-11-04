@@ -29,6 +29,7 @@ public Role(String roleName) {
 @Column(name="RoleId")
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_generator")
 @SequenceGenerator(name = "c_generator", sequenceName = "ROLE_SEQUENCE",allocationSize = 1,initialValue = 1)
+
 public int getRoleId() {
 	return roleId;
 }
@@ -45,6 +46,12 @@ public String getRoleName() {
 public void setRoleName(String roleName) {
 	this.roleName = roleName;
 }
+
+@Override
+public String toString() {
+	return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
+}
+
 
 
 }
