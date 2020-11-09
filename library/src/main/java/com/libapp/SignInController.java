@@ -48,21 +48,11 @@ public class SignInController {
         }
         else {
         	
-        
-    	SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
-    	Session session=sessionFactory.openSession();
-    	session.beginTransaction();
-    	
-    	
-    	Query query=session.getNamedQuery("User.byEmailAndPass");
-    	query.setParameter(0, email);
-    	query.setParameter(1, pass);
- 
-    	User user=(User)query.uniqueResult();
-    	
-    	session.getTransaction().commit();
-    	session.close();
-    	
+        	UserDAO u=new UserDAO();
+    		u.openCurrentSession();
+        	User user=u.Validation(email, pass);
+    		u.closeCurrentSession();
+    		
     	if(user!=null)
     	{
     		((Node)event.getSource()).getScene().getWindow().hide();
