@@ -9,6 +9,7 @@
     <property name="connection.username">LIBRARY</property>
     <property name="connection.password">SISITO21</property>
     <property name="dialect">org.hibernate.dialect.Oracle8iDialect</property>
+     <property name="hibernate.current_session_context_class">thread</property>
      
     <property name="show_sql">true</property>
     

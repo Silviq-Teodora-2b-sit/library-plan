@@ -4,11 +4,18 @@ package com.libapp;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import com.libapp.service.HibernateUtil;
+import com.libapp.service.Service;
+import com.libapp.service.ServiceImpl;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -47,11 +54,13 @@ public class SignInController {
         	alert.showAndWait();
         }
         else {
-        	
-        	UserDAO u=new UserDAO();
-    		u.openCurrentSession();
-        	User user=u.Validation(email, pass);
-    		u.closeCurrentSession();
+    		
+    		Service<User> userService = new ServiceImpl<User>(User.class, HibernateUtil.getSessionFactory());
+    		 Map<Integer, Object> data = new HashMap<Integer, Object>();
+	         data.put(0, email);
+	         data.put(1, pass);
+	         
+	         User user=userService.namedQuery("User.byEmailAndPass", data);
     		
     	if(user!=null)
     	{
