@@ -83,7 +83,6 @@ public class SignInController {
 		 try {
 			root= FXMLLoader.load(getClass().getResource(title+".fxml"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 Scene scene= new Scene(root);
@@ -91,5 +90,13 @@ public class SignInController {
 		 stage.setScene(scene);
 		 stage.show();
     }
+    
+    @FXML
+    void onSingUp(ActionEvent event) {
+    	App.setControllerRole("reader");
+    	((Node)event.getSource()).getScene().getWindow().hide();
+    	loadWindow("signup");
+    }
+
 
 }

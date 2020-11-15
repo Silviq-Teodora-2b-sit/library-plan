@@ -12,7 +12,9 @@ import javafx.stage.StageStyle;
 
 
 public class App extends Application {
-
+	public static String role;
+	
+    
 	public static void main(String args[]) {
 		Application.launch(args);
 	}
@@ -27,5 +29,13 @@ public class App extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	public static String getControllerRole() {
+		 return role;
+	}
+
+	public static void setControllerRole(String passedRole) {
+		 App.role = passedRole;
 	}
 }

@@ -1,20 +1,13 @@
 package com.libapp;
 
-//import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.Event;
-
-
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-//import javafx.scene.control.Button;
+
 
 public class AdminController{
 
@@ -88,7 +81,6 @@ public class AdminController{
 		 try {
 			root= FXMLLoader.load(getClass().getResource(page+".fxml"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	

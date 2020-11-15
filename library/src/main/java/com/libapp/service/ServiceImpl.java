@@ -51,6 +51,5 @@ public class ServiceImpl<T> implements Service<T>  {
 	public  T namedQuery(String query, Map<Integer, Object> params){
 		return (T)dao.namedQuery(query, params);
 	}
-		
 
 }

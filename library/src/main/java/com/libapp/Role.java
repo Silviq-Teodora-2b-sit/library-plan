@@ -20,10 +20,10 @@ public Role() {
 	// TODO Auto-generated constructor stub
 }
 
-public Role(String roleName) {
+/*public Role(String roleName) {
 	super();
 	this.roleName = roleName;
-}
+}*/
 
 @Id
 @Column(name="RoleId")

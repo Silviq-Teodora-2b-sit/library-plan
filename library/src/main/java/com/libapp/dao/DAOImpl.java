@@ -71,7 +71,7 @@ public class DAOImpl<T> implements DAOInt<T>{
 	public T namedQuery(String query, Map<Integer, Object> params){
 		Session session = sessionFactory.getCurrentSession();
 		  session.beginTransaction();
-		  Query q=session.getNamedQuery("User.byEmailAndPass"); 
+		  Query q=session.getNamedQuery(query); 
 		   for (Integer i : params.keySet()) {
 		    q.setParameter(i, params.get(i));
 		   }
@@ -79,4 +79,5 @@ public class DAOImpl<T> implements DAOInt<T>{
 		   session.getTransaction().commit();
 		   return result;
 	}
+	
 }

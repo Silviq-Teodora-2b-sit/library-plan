@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name = "User.byEmailAndPass", query = "from User where userEmail=? and userPass=?")
+@NamedQueries( { @NamedQuery(name = "User.byEmailAndPass", query = "from User where userEmail=? and userPass=?"),
+@NamedQuery(name = "User.Registration", query = "from User where userName=? and userEmail=?")})
 @Table(name="USERS")
 public class User {
 private int userId;
@@ -30,14 +32,14 @@ public User() {
 	// TODO Auto-generated constructor stub
 }
 
-public User(String userName, String userEmail, String userPhone, String userPass, Role userRole) {
+/*public User(String userName, String userEmail, String userPhone, String userPass, Role userRole) {
 	super();
 	this.userName = userName;
 	this.userEmail = userEmail;
 	this.userPhone = userPhone;
 	this.userPass = userPass;
 	this.userRole = userRole;
-}
+}*/
 
 @Id
 @Column(name = "UserId")

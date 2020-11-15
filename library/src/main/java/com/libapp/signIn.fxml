@@ -33,7 +33,7 @@
             <Font size="41.0" />
          </font>
       </Label>
-      <Button layoutX="139.0" layoutY="509.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="236.0" style="-fx-background-color: #3e98f7;" text="Sign Up" textFill="WHITE" />
+      <Button layoutX="139.0" layoutY="509.0" mnemonicParsing="false" onAction="#onSingUp" prefHeight="31.0" prefWidth="236.0" style="-fx-background-color: #3e98f7;" text="Sign Up" textFill="WHITE" />
       <Label layoutX="144.0" layoutY="477.0" text="Borrow every book you want, now!" textFill="WHITE" />
    </children>
 </AnchorPane>
