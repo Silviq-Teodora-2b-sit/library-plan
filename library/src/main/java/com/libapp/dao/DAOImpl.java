@@ -75,7 +75,8 @@ public class DAOImpl<T> implements DAOInt<T>{
 		   for (Integer i : params.keySet()) {
 		    q.setParameter(i, params.get(i));
 		   }
-		   T result= (T) q.uniqueResult();
+		   @SuppressWarnings("unchecked")
+		T result= (T) q.uniqueResult();
 		   session.getTransaction().commit();
 		   return result;
 	}

@@ -32,19 +32,19 @@ public User() {
 	// TODO Auto-generated constructor stub
 }
 
-/*public User(String userName, String userEmail, String userPhone, String userPass, Role userRole) {
+public User(String userName, String userEmail, String userPhone, String userPass, Role userRole) {
 	super();
 	this.userName = userName;
 	this.userEmail = userEmail;
 	this.userPhone = userPhone;
 	this.userPass = userPass;
 	this.userRole = userRole;
-}*/
+}
 
 @Id
 @Column(name = "UserId")
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_generator")
-@SequenceGenerator(name = "c_generator", sequenceName = "USERS_SEQUENCE",allocationSize = 1,initialValue = 1)
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
+@SequenceGenerator(name = "user_generator", sequenceName = "USERS_SEQUENCE",allocationSize = 1,initialValue = 2)
 public int getUserId() {
 	return userId;
 }

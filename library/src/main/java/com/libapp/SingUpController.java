@@ -32,6 +32,7 @@ public class SingUpController {
     @FXML
     void SingUp(ActionEvent event) {
     	Service<User> userService = new ServiceImpl<User>(User.class, HibernateUtil.getSessionFactory());
+    	Service<Role> roleSer = new ServiceImpl<Role>(Role.class, HibernateUtil.getSessionFactory());
     	String name=tf_name.getText();
     	 String email=tf_email_up.getText();
     	 String pass=pf_pass_up.getText();
@@ -41,42 +42,64 @@ public class SingUpController {
         {
         	Alert alert=new Alert(AlertType.ERROR);
         	alert.setHeaderText(null);
-        	alert.setContentText("Fill all required fields!");
+        	alert.setContentText("Fill all required fields!Username and password -6 symbols,phone must be 10 numbers!");
         	alert.showAndWait();
         }
    	 else {
-				Role r=new Role();
-				User user=new User();
-				user.setUserName(name);
-				user.setUserEmail(email);
-				user.setUserPhone(phone);
-				user.setUserPass(pass);
-				r.setRoleName(App.getControllerRole());
-				user.setUserRole(r);
-				
-				 
-				 Map<Integer, Object> data = new HashMap<Integer, Object>();
-		         data.put(0, name);
-		         data.put(1, email);
-		         
-		        User user1= userService.namedQuery("User.Registration", data);
-		       
-		        if(user1==null)
-		        {
-		        	userService.save(user);
-		        	Alert alert=new Alert(AlertType.INFORMATION);
-		        	alert.setHeaderText(null);
-		        	alert.setContentText("Success!");
-		        	alert.showAndWait();
-		        }
-		        else {
-		        	Alert alert=new Alert(AlertType.ERROR);
-		        	alert.setHeaderText(null);
-		        	alert.setContentText("This User already exists!");
-		        	alert.showAndWait();
-		        }
-		         
+   		 
+        if(checkUser(userService, name, email)==true)
+        {
+        	User user=new User(name,email,phone,pass,null);
+        	Role role=new Role();
+        	role=checkRole(roleSer);
+        if(role!=null) 
+        {	
+        	user.setUserRole(role);	
+        }
+        else {
+        	role=new Role(App.getControllerRole());
+        	 user.setUserRole(role);
+        }
+		         userService.save(user);    
 			}
+        else {
+        	Alert alert=new Alert(AlertType.ERROR);
+        	alert.setHeaderText(null);
+        	alert.setContentText("This User already exists!");
+        	alert.showAndWait();
+        }
+   	 }
+		
+		
 		}
+    
+    private boolean checkUser(Service<User> userService,String name,String email) {
+    	
+    	Map<Integer, Object> dataUser = new HashMap<Integer, Object>();
+        dataUser.put(0, name);
+        dataUser.put(1, email);
+        
+       User user1= userService.namedQuery("User.Registration", dataUser);
+    	if(user1==null)
+        {	
+    		return true;
+        }
+        else 
+        	return false;
+ 
+    }
+    
+    private Role checkRole(Service<Role> roleSer) {
+    	Map<Integer, Object> data = new HashMap<Integer, Object>();
+        data.put(0, App.getControllerRole());
+    	 Role role=roleSer.namedQuery("Role.Check", data);
+    	 if(role!=null)
+    	 {
+    		 return role;
+    	 }
+    	 else return null;
+    }
+    
+    
     }
 

@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="ROLE")
+@NamedQuery(name = "Role.Check", query = "from Role where roleName=?")
 public class Role {
 private int roleId;
 private String roleName;
@@ -20,15 +22,15 @@ public Role() {
 	// TODO Auto-generated constructor stub
 }
 
-/*public Role(String roleName) {
+public Role(String roleName) {
 	super();
 	this.roleName = roleName;
-}*/
+}
 
 @Id
 @Column(name="RoleId")
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_generator")
-@SequenceGenerator(name = "c_generator", sequenceName = "ROLE_SEQUENCE",allocationSize = 1,initialValue = 1)
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_generator")
+@SequenceGenerator(name = "role_generator", sequenceName = "ROLE_SEQUENCE",allocationSize = 1,initialValue = 2)
 
 public int getRoleId() {
 	return roleId;
