@@ -23,7 +23,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Parent root= FXMLLoader.load(getClass().getResource("signIn.fxml"));
+		Parent root= FXMLLoader.load(getClass().getResource("singIn.fxml"));
 		primaryStage.initStyle(StageStyle.DECORATED);
 		
 		Scene scene = new Scene(root);

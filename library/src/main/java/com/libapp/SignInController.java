@@ -3,6 +3,7 @@ package com.libapp;
 //import java.awt.event.ActionEvent;
 import javafx.event.ActionEvent;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,7 +86,7 @@ public class SignInController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		 Scene scene= new Scene(root);
+		 Scene scene=new Scene(root);
 		 Stage stage=new Stage(StageStyle.DECORATED);
 		 stage.setScene(scene);
 		 stage.show();

@@ -7,17 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 
 public class AdminController{
+	   @FXML
+	    private AnchorPane ap;
 
-
-    @FXML
-    private BorderPane bp;
-
-    @FXML
-    private AnchorPane ap;
-    
+	    @FXML
+	    private Pane pane;
     
     @FXML
     private void ScrappBook(ActionEvent event) { 
@@ -41,14 +43,21 @@ public class AdminController{
 
     @FXML
     private void createOperators(ActionEvent event) {
-    	bp.setCenter(ap);
+    	App.setControllerRole("operator");
+    	loadPage("saveUsers");
     }
 
     @FXML
     private void createReader(ActionEvent event) {
-    	loadPage("");
+    	App.setControllerRole("reader");
+    	loadPage("saveUsers");
     }
 
+    @FXML
+    void deleteReader(ActionEvent event) {
+    	loadPage("");
+    }
+    
     @FXML
     private void refBook(ActionEvent event) {
     	loadPage("");
@@ -84,7 +93,9 @@ public class AdminController{
 			e.printStackTrace();
 		}
 	
-		 bp.setCenter(root);
+		 pane.getChildren().add(root);
+		 
 	}
+	
 	
 }
