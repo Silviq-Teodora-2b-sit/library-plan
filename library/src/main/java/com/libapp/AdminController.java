@@ -1,25 +1,38 @@
 package com.libapp;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.libapp.controllersFunctions.CommonFunctions;
+import com.libapp.controllersFunctions.CommonFunctionsImpl;
+
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 
-public class AdminController{
-	   @FXML
+
+public class AdminController extends SingUpController implements Initializable{
+	private CommonFunctions windowFunction;
+
+	  @FXML
 	    private AnchorPane ap;
 
-	    @FXML
+	  @FXML
 	    private Pane pane;
+	  
+	  @FXML
+	  private Label userName;
+
+	  @FXML
+	    private Label user;
+	    
     
     @FXML
     private void ScrappBook(ActionEvent event) { 
@@ -43,14 +56,18 @@ public class AdminController{
 
     @FXML
     private void createOperators(ActionEvent event) {
+    	
     	App.setControllerRole("operator");
     	loadPage("saveUsers");
+    	static_label.setText("Operator");
     }
 
     @FXML
     private void createReader(ActionEvent event) {
+    	
     	App.setControllerRole("reader");
     	loadPage("saveUsers");
+    	static_label.setText("Reader");
     }
 
     @FXML
@@ -75,15 +92,13 @@ public class AdminController{
 
     @FXML
     private void refUsers(ActionEvent event) {
-    	loadPage("");
+    	loadPage("refUsers");
     }
 
     @FXML
    private  void returnBook(ActionEvent event) {
     	loadPage("");
     }
-
-	
 
 	private void loadPage(String page) {
 		Parent root = null;
@@ -92,10 +107,21 @@ public class AdminController{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
 		 pane.getChildren().add(root);
 		 
 	}
 	
+	@FXML
+    void logOut(ActionEvent event) {
+		windowFunction=new CommonFunctionsImpl();
+		windowFunction.logOut(event,"\\com\\libapp\\signIn");
+		
+    }
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+	userName.setText(SignInController.saveUser.getUserName());
+	user.setText(SignInController.saveUser.getUserName());
+	}
 }

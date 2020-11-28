@@ -1,8 +1,12 @@
 package com.libapp.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -75,10 +79,27 @@ public class DAOImpl<T> implements DAOInt<T>{
 		   for (Integer i : params.keySet()) {
 		    q.setParameter(i, params.get(i));
 		   }
-		   @SuppressWarnings("unchecked")
 		T result= (T) q.uniqueResult();
 		   session.getTransaction().commit();
 		   return result;
 	}
+
+	@Override
+	public List<T> createQuery(String hsql, Map<String, Object> params) {
+		Session session = sessionFactory.getCurrentSession();
+		  session.beginTransaction();
+		  Query query = session.createQuery(hsql);
+		  if (params != null) {
+		   for (String i : params.keySet()) {
+		    query.setParameter(i, params.get(i));
+		   }
+		  }
+		  List<T> result = null;
+		  result = query.list();
+		  session.getTransaction().commit();
+		return result;
+	}
+
 	
+
 }

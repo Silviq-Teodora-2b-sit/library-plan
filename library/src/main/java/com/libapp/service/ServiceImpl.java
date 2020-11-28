@@ -52,4 +52,9 @@ public class ServiceImpl<T> implements Service<T>  {
 		return (T)dao.namedQuery(query, params);
 	}
 
+	@Override
+	public List<T> createQuery(String hsql, Map<String, Object> params) {
+		return (List<T>)dao.createQuery(hsql, params);
+	}
+
 }

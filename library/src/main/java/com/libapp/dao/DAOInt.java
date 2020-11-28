@@ -15,5 +15,7 @@ public interface DAOInt<T> {
     List<T> query(String from);
     
     T namedQuery(String query, Map<Integer, Object> params);
+    
+    List<T> createQuery(String hsql, Map<String, Object> params);
   
 }

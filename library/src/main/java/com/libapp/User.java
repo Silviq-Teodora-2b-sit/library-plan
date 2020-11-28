@@ -1,5 +1,7 @@
 package com.libapp;
 
+import java.sql.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +14,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 @Entity
 @NamedQueries( { @NamedQuery(name = "User.byEmailAndPass", query = "from User where userEmail=? and userPass=?"),
-@NamedQuery(name = "User.Registration", query = "from User where userName=? and userEmail=?")})
+@NamedQuery(name = "User.Registration", query = "from User where userName=? and userEmail=?"),
+@NamedQuery(name = "User.Search", query = "from User where userName=?")})
 @Table(name="USERS")
 public class User {
 private int userId;
@@ -22,10 +26,8 @@ private String userName;
 private String userEmail;
 private String userPhone;
 private String userPass;
-
-
 private Role userRole;
-
+private Date registrationDate;
 
 public User() {
 	super();
@@ -44,7 +46,7 @@ public User(String userName, String userEmail, String userPhone, String userPass
 @Id
 @Column(name = "UserId")
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
-@SequenceGenerator(name = "user_generator", sequenceName = "USERS_SEQUENCE",allocationSize = 1,initialValue = 2)
+@SequenceGenerator(name = "user_generator", sequenceName = "USERS_SEQUENCE",allocationSize = 1,initialValue = 7)
 public int getUserId() {
 	return userId;
 }
@@ -93,6 +95,12 @@ public String toString() {
 }
 
 
+public Date getRegistrationDate() {
+	return registrationDate;
+}
 
+public void setRegistrationDate(Date registrationDate) {
+	this.registrationDate = registrationDate;
+}
 
 }
