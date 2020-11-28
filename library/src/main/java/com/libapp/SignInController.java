@@ -4,6 +4,10 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.libapp.service.HibernateUtil;
 import com.libapp.service.Service;
 import com.libapp.service.ServiceImpl;
@@ -24,6 +28,7 @@ import javafx.scene.Node;
 public class SignInController {
 	public static User saveUser;
 
+	 private Logger LOGGER=LogManager.getLogger(SignInController.class);
 
 	@FXML
     private TextField tf_email_in;
@@ -57,6 +62,7 @@ public class SignInController {
     		
     	if(user!=null)
     	{
+    		LOGGER.info("User: "+ user.getUserName()+" log in the system!");
     		((Node)event.getSource()).getScene().getWindow().hide();
     		loadWindow("admin");
     	}

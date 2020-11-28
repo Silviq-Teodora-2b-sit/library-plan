@@ -5,6 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.libapp.controllersFunctions.CommonFunctions;
 import com.libapp.controllersFunctions.CommonFunctionsImpl;
 
@@ -20,6 +23,7 @@ import javafx.scene.control.Label;
 
 public class AdminController extends SingUpController implements Initializable{
 	private CommonFunctions windowFunction;
+	 private Logger LOGGER=LogManager.getLogger(AdminController.class);
 
 	  @FXML
 	    private AnchorPane ap;
@@ -114,6 +118,7 @@ public class AdminController extends SingUpController implements Initializable{
 	@FXML
     void logOut(ActionEvent event) {
 		windowFunction=new CommonFunctionsImpl();
+		LOGGER.info("User: "+userName.getText()+" logout from the system!");
 		windowFunction.logOut(event,"\\com\\libapp\\signIn");
 		
     }
