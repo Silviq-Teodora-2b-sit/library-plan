@@ -1,10 +1,10 @@
 package com.libapp;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
+
 
 import com.libapp.TabelViews.searchUserTabel;
 import com.libapp.controllersFunctions.CommonFunctions;
@@ -14,7 +14,7 @@ import com.libapp.service.Service;
 import com.libapp.service.ServiceImpl;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -114,6 +114,13 @@ public class SearchUserController {
     	{
     		Role role=new Role();
     		role=users.get(i).getUserRole();
+    		if(SignInController.saveUser.getUserRole().getRoleName()=="operator" && role.getRoleName()=="admin" )
+    		{
+    			i++;
+    		}
+    		else 
+    			{
+			
     		search.add(new searchUserTabel(
     				new SimpleIntegerProperty(users.get(i).getUserId()),
     				new SimpleStringProperty(users.get(i).getUserName()),
@@ -123,9 +130,10 @@ public class SearchUserController {
     				new SimpleStringProperty(role.getRoleName()),
     				new SimpleStringProperty(users.get(i).getRegistrationDate().toString())
     				));
+    			}
     		i++;
     	}
-    	search_id.setCellValueFactory(new PropertyValueFactory<>("userId"));
+    	search_id.setCellValueFactory(new PropertyValueFactory<>("Id"));
     	search_userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
     	searchEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
     	search_Phone.setCellValueFactory(new PropertyValueFactory<>("userPhone"));

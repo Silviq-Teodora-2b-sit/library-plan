@@ -25,6 +25,7 @@
             <Label layoutX="79.0" layoutY="305.0" text="Password:" textFill="WHITE" />
             <PasswordField fx:id="pf_pass_up" layoutX="159.0" layoutY="300.0" promptText="password" />
             <Button layoutX="149.0" layoutY="409.0" mnemonicParsing="false" onAction="#SingUp" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: #3e98f7;" text="Sign Up" textFill="WHITE" />
+            <Button layoutX="24.0" layoutY="476.0" mnemonicParsing="false" onAction="#goToLogIn" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #3e98f7;" text="Log in" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

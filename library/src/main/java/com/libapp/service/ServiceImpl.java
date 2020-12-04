@@ -2,11 +2,7 @@ package com.libapp.service;
 
 import java.util.List;
 import java.util.Map;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.libapp.User;
 import com.libapp.dao.DAOImpl;
 import com.libapp.dao.DAOInt;
 

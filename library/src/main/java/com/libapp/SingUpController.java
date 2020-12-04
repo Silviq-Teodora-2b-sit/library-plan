@@ -8,12 +8,15 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.net.URL;
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.libapp.controllersFunctions.CommonFunctions;
+import com.libapp.controllersFunctions.CommonFunctionsImpl;
 import com.libapp.service.HibernateUtil;
 import com.libapp.service.Service;
 import com.libapp.service.ServiceImpl;
@@ -22,7 +25,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 public class SingUpController implements Initializable{
-	
+	private CommonFunctions windowFunction;
+	 private Logger LOGGER=LogManager.getLogger(SingUpController.class);
 	
 	@FXML
 	private Label lb_register;
@@ -68,12 +72,13 @@ public class SingUpController implements Initializable{
         	User user=new User(name,email,phone,pass,null);
         	Role role=new Role();
         	role=checkRole(roleSer);
-        if(role!=null) 
-        {	
-        	user.setUserRole(role);	
         	Date utilDate=new Date();
         	java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         	user.setRegistrationDate(sqlDate);
+        if(role!=null) 
+        {	
+        	user.setUserRole(role);	
+        	
         }
         else {
         	role=new Role(App.getControllerRole());
@@ -117,6 +122,13 @@ public class SingUpController implements Initializable{
     		 return role;
     	 }
     	 else return null;
+    }
+
+    @FXML
+    void goToLogIn(ActionEvent event) {
+    	windowFunction=new CommonFunctionsImpl();
+		LOGGER.info("From registration form to login!");
+		windowFunction.logOut(event,"\\com\\libapp\\signIn");
     }
 
 	@Override

@@ -62,9 +62,21 @@ public class SignInController {
     		
     	if(user!=null)
     	{
+    		if(user.getUserRole().getRoleName().equals("admin"))
+    		{
     		LOGGER.info("User: "+ user.getUserName()+" log in the system!");
     		((Node)event.getSource()).getScene().getWindow().hide();
     		loadWindow("admin");
+    		}
+    		else if(user.getUserRole().getRoleName().equals("operator")){
+    			LOGGER.info("User: "+ user.getUserName()+" log in the system!");
+        		((Node)event.getSource()).getScene().getWindow().hide();
+        		loadWindow("operator");
+			}
+    		else
+    			LOGGER.info("User: "+ user.getUserName()+" log in the system!");
+    		((Node)event.getSource()).getScene().getWindow().hide();
+    		loadWindow("reader");
     	}
     	else {
 
