@@ -47,7 +47,7 @@ public class SingUpController implements Initializable{
 
     @FXML
     void SingUp(ActionEvent event) {
-    	
+    	windowFunction=new CommonFunctionsImpl();
     	Service<User> userService = new ServiceImpl<User>(User.class, HibernateUtil.getSessionFactory());
     	Service<Role> roleSer = new ServiceImpl<Role>(Role.class, HibernateUtil.getSessionFactory());
     	
@@ -84,11 +84,14 @@ public class SingUpController implements Initializable{
         	role=new Role(App.getControllerRole());
         	 user.setUserRole(role);
         }
+        LOGGER.info("User: "+ user.getUserName()+" registered in DB!");
+        windowFunction.alertForSearchUser("Registartion succsessfuly!");
 		         userService.save(user);    
 			}
         else {
         	Alert alert=new Alert(AlertType.ERROR);
         	alert.setHeaderText(null);
+        	windowFunction.alertForSearchUser("Registartion unsuccsessfuly!");
         	alert.setContentText("This User already exists!");
         	alert.showAndWait();
         }

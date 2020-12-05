@@ -1,5 +1,4 @@
 package com.libapp;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,9 +19,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 
 
-public class AdminController extends SingUpController implements Initializable{
+public class OperatorController extends SingUpController implements Initializable{
 	private CommonFunctions windowFunction;
-	 private Logger LOGGER=LogManager.getLogger(AdminController.class);
+	 private Logger LOGGER=LogManager.getLogger(OperatorController.class);
 
 	  @FXML
 	    private AnchorPane ap;
@@ -55,14 +54,6 @@ public class AdminController extends SingUpController implements Initializable{
     @FXML
     private void borrowBook(ActionEvent event) {
     	loadPage("");
-    }
-
-    @FXML
-    private void createOperators(ActionEvent event) {
-    	
-    	App.setControllerRole("operator");
-    	loadPage("saveUsers");
-    	static_label.setText("Operator");
     }
 
     @FXML

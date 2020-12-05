@@ -73,10 +73,11 @@ public class SignInController {
         		((Node)event.getSource()).getScene().getWindow().hide();
         		loadWindow("operator");
 			}
-    		else
+    		else if(user.getUserRole().getRoleName().equals("reader")){
     			LOGGER.info("User: "+ user.getUserName()+" log in the system!");
     		((Node)event.getSource()).getScene().getWindow().hide();
     		loadWindow("reader");
+    		}
     	}
     	else {
 

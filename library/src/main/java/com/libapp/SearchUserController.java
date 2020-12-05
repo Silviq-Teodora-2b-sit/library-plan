@@ -114,7 +114,7 @@ public class SearchUserController {
     	{
     		Role role=new Role();
     		role=users.get(i).getUserRole();
-    		if(SignInController.saveUser.getUserRole().getRoleName()=="operator" && role.getRoleName()=="admin" )
+    		if((SignInController.saveUser.getUserRole().getRoleName()).equals("operator") && (role.getRoleName()).equals("admin"))
     		{
     			i++;
     		}

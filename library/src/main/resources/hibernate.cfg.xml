@@ -18,6 +18,10 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="com.libapp.User" />
     <mapping class="com.libapp.Role" />
+    <mapping class="com.libapp.Author" /> 
+	<mapping class="com.libapp.Genre" /> 
+	<mapping class="com.libapp.Publisher" /> 
+	<mapping class="com.libapp.Book" /> 
 
   </session-factory>
 </hibernate-configuration>

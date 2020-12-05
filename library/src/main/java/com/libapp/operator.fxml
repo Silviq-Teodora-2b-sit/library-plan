@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.2742448330683625" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="867.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libapp.OperatorController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="865.0" prefWidth="350.0">
+         <children>
+            <VBox prefHeight="867.0" prefWidth="342.0" style="-fx-background-color: #0e7796;">
+               <children>
+                  <Pane prefHeight="56.0" prefWidth="345.0">
+                     <children>
+                        <Label layoutY="15.0" text="Create" textFill="WHITE">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button mnemonicParsing="false" onAction="#createReader" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Create Reader" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteReader" prefHeight="52.0" prefWidth="341.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Delete Reader" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="66.0" prefWidth="345.0">
+                     <children>
+                        <Label layoutY="14.0" text="Book Operations" textFill="WHITE">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button mnemonicParsing="false" onAction="#addBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Add Book" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#borrowBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Borrow Book" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#returnBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Return Book" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="218.0" mnemonicParsing="false" onAction="#ScrappBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Scrapping Book" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onAction="#archiveBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Archive Book" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="61.0" prefWidth="381.0">
+                     <children>
+                        <Label layoutY="14.0" text="References" textFill="WHITE">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button layoutX="10.0" layoutY="374.0" mnemonicParsing="false" onAction="#refBook" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Books" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="426.0" mnemonicParsing="false" onAction="#refUsers" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Users" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="478.0" mnemonicParsing="false" onAction="#refRating" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Rating" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#refForms" prefHeight="51.0" prefWidth="346.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Submitted forms" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#logOut" prefHeight="56.0" prefWidth="347.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 2px 2px 2px;" text="Log out" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="user" prefHeight="21.0" prefWidth="358.0" text="Label" />
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    <AnchorPane fx:id="ap" minHeight="0.0" minWidth="0.0" prefHeight="865.0" prefWidth="902.0">
+         <children>
+            <Pane fx:id="pane" layoutX="-2.0" prefHeight="867.0" prefWidth="916.0" style="-fx-background-color: #474641;">
+               <children>
+                  <Label layoutX="312.0" layoutY="95.0" prefHeight="70.0" prefWidth="229.0" text="Welcome," textFill="WHITE">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="userName" layoutX="322.0" layoutY="158.0" prefHeight="66.0" prefWidth="208.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="206.0" layoutY="562.0" text="             The books&#10; we read answers questions &#10;we didn't even know existed.&#10;        -AXEL MARAZZI-" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="252.0" fitWidth="508.0" layoutX="193.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ClipartKey_851249.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
